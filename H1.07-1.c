@@ -73,7 +73,27 @@ while(1)
                 }
         system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
 		system("CLS");//清除螢幕 
+		}if(ch == 'C'||ch == 'c'){
+		printf("確定要結束程式嗎? (y/n)\n");
+		fflush(stdin);//使input buffer淨空 
+		scanf("%c" , &ans);
+	while(ans!='y'&&ans!='Y'&&ans!='N'&&ans!='n')
+	{
+			printf("輸入錯誤請重打");
+			fflush(stdin);//使input buffer淨空 
+			scanf("%c",&ans);
+	}
+	
+	if(ans == 'y'||ans == 'Y')
+		{
+		system("CLS");//清除螢幕 
+		continue;
+		}
+	if(ans == 'n'||ans == 'N')
+    {system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+	return 0;
+	}
+    } 
 }
   }
-  } 
   } 
