@@ -49,7 +49,31 @@ while(1)
     printf("*~*~*~*~*~*~*~*~*~*~*~*~*~*\n"); //印出字串
     
     system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
-	system("CLS");//清除螢幕  
+	system("CLS");//清除螢幕
+	  printf("輸入選項: ");
+	fflush(stdin);//使input buffer淨空 
+	scanf("%c", &ch);
+	
+ if(ch == 'B'||ch == 'b') {
+        printf("請輸入乘法表的大小 (1-9): ");
+        fflush(stdin);//使input buffer淨空 
+        scanf("%d", &n);
+                while (n < 0|| n > 10) {
+                    printf("無效的輸入。請輸入 1 到 9 的數字。\n");
+                    fflush(stdin);//使input buffer淨空 
+                    scanf("%d",&n);
+                }
+
+                int i, j;
+                for (i = 1; i <= n; i++) {
+                    for (j = 1; j <= n; j++) {
+                        printf("%2d x %2d = %2d   ", i, j, i * j);
+                    }
+                    printf("\n");
+                }
+        system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+		system("CLS");//清除螢幕 
 }
   }
+  } 
   } 
