@@ -68,12 +68,12 @@ if(ch == 'd'){
 			scanf("%c",&ans);
 	}
 	
-	if(ans == 'y'||ans == 'Y')
+	if(ans == 'y')
 		{
 		system("CLS");//清除螢幕 
 		continue;
 		}
-	if(ans == 'n'||ans == 'N')
+	if(ans == 'n')
     {system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
 	return 0;
 	}
