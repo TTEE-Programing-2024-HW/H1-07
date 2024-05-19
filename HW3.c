@@ -53,6 +53,41 @@ while(1){
     system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
 	system("CLS");//清除螢幕
 	
+	printf("輸入選項: ");
+	fflush(stdin);//使input buffer淨空 
+	scanf("%c", &ch);
 }
+if(ch == 'd'){
+		printf("確定要結束程式嗎? (y/n)\n");
+		fflush(stdin);//使input buffer淨空 
+		scanf("%c" , &ans);
+	while(ans!='y'&&ans!='Y'&&ans!='N'&&ans!='n')
+	{
+			printf("輸入錯誤請重打");
+			fflush(stdin);//使input buffer淨空 
+			scanf("%c",&ans);
+	}
+	
+	if(ans == 'y'||ans == 'Y')
+		{
+		system("CLS");//清除螢幕 
+		continue;
+		}
+	if(ans == 'n'||ans == 'N')
+    {system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+	return 0;
+	}
+    } else if(input!=password&&a>1)//若是錯誤，
+	{
+		a=a-1;
+        printf("錯誤!,還剩%d機會",a);
+        fflush(stdin);//使input buffer淨空 
+        scanf("%d",&input);
+    }
+    else
+	{
+    system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+	system("CLS");//清除螢幕
+	return 0;}
 }
-}
+} 
