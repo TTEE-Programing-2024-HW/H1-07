@@ -93,12 +93,53 @@ while(1){
 	fflush(stdin);//使input buffer淨空 
 	scanf("%c", &ch);
 }
-if (ch == 'a') {
-            displaySeats(seats);
-            system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
-            system("CLS");//清除螢幕
-        }
-                
+if(ch == 'a') { 
+            if (sit == 0) {
+                for (i = 0; i <= 8; i++) {
+                    for (j = 0; j <= 8; j++) {
+                        if (seats[i][j] == '@')
+                            seats[i][j] = '*';
+                    }
+                }
+                for (i = 0; i <= 8; i++) {
+                    for (j = 0; j <= 8; j++) {
+                        printf("%c", seats[i][j]);
+                    }
+                    printf("\n");
+                }
+                system("PAUSE");
+                system("CLS");
+            }
+            if (sit == 1) {
+                for (i = 0; i <= 8; i++) {
+                    for (j = 0; j <= 8; j++) {
+                        seats[i][j] = '-';
+                    }
+                }
+                while (sit1 < 10) {
+                    i = rand() % 9;
+                    j = rand() % 9;
+
+                    if (seats[i][j] == '-') {
+                        seats[i][j] = '*';
+                        sit1++;
+                    }
+                }
+                for (i = 0; i <= 8; i++) {
+                    for (j = 0; j <= 8; j++) {
+                        printf("%c", seats[i][j]);
+                    }
+                    printf("\n");
+                }
+                sit1 = 0;
+                for (i = 0; i <= 8; i++) {
+                    for (j = 0; j <= 8; j++) {
+                        seats[i][j] = '-';
+                    }
+                }
+                system("PAUSE");
+                system("CLS");
+            }      
 if(ch == 'd'){
 		printf("確定要結束程式嗎? (y/n)\n");
 		fflush(stdin);//淨空 
@@ -132,5 +173,6 @@ if(ch == 'd'){
     system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
 	system("CLS");//清除螢幕
 	return 0;} 
+}
 }
 }
