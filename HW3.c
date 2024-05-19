@@ -139,7 +139,36 @@ if(ch == 'a') {
                 }
                 system("PAUSE");
                 system("CLS");
-            }      
+            }
+ } else if(ch == 'c') {
+            int row, col;
+            while(1) {
+                printf("請輸入座位 (例如 1-2) 或輸入 0-0 結束：");
+                scanf("%d-%d", &row, &col);
+                if (row == 0 && col == 0) break;
+                if (row >= 1 && row <= 9 && col >= 1 && col <= 9 && seats[row-1][col-1] == '-') {
+                    seats[row-1][col-1] = '@';
+                } else {
+                    printf("輸入錯誤或座位已被選擇，請重新輸入。\n");
+                }
+            }
+            for (i = 0; i <= 8; i++) {
+                for (j = 0; j <= 8; j++) {
+                    printf("%c", seats[i][j]);
+                }
+                printf("\n");
+            }
+            printf("按下任意鍵確認選擇。\n");
+            getchar(); // Wait for any key press
+            for (i = 0; i <= 8; i++) {
+                for (j = 0; j <= 8; j++) {
+                    if (seats[i][j] == '@')
+                        seats[i][j] = '*';
+                }
+            }
+            system("PAUSE");
+            system("CLS");
+        } 
 if(ch == 'd'){
 		printf("確定要結束程式嗎? (y/n)\n");
 		fflush(stdin);//淨空 
@@ -173,6 +202,5 @@ if(ch == 'd'){
     system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
 	system("CLS");//清除螢幕
 	return 0;} 
-}
 }
 }
