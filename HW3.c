@@ -1,10 +1,46 @@
 #include <stdio.h>//把stdio.h這個檔案含括進來  
 #include <stdlib.h>//把stdlib.h這個檔案含括進來  
+#include <time.h>// 把time.h這個檔案含括進來
 
-int main(void) //主函數main()從這開始 
+void displaySeats(char seats[9][9]) {
+    printf("  123456789\n");
+    int i, j; // 將變數宣告移到外面
+    for (i = 0; i < 9; i++) {
+        printf("%d ", 9 - i);
+        for (j = 0; j < 9; j++) {
+            printf("%c", seats[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void randomReserveSeats(char seats[9][9], int num) {
+    int i, j, count = 0;
+    while (count < num) {
+        i = rand() % 9;
+        j = rand() % 9;
+        if (seats[i][j] == '-') {
+            seats[i][j] = '*';
+            count++;
+        }
+    }
+}
+
+int main(void) // 主函數main()從這開始
 {
-	int password=2024,input,a=3,n;//宣告整數變數passwrd,input，將password的值設為2024 
-	char ch,ans;
+    int password = 2024, input, a = 3, sit = 0, i = 0, j = 0, sit1 = 0; // 宣告整數變數password, input，將password的值設為2024
+    char ch, ans;
+    srand(time(NULL)); // 設定隨機種子
+    char seats[9][9];
+
+    for (i = 0; i < 9; i++) {
+        for (j = 0; j < 9; j++) {
+            seats[i][j] = '-';
+        }
+    }
+    
+    randomReserveSeats(seats, 10); // 隨機產生十個已被預訂的座位
+    
     printf("HHHHHHHH                HHHHHHHH        11111111        77777777777777777777777777777777\n"); //印出字串          
     printf("HHHHHHHH                HHHHHHHH        11111111        77777777777777777777777777777777\n"); //印出字串
     printf("HHHHHHHH                HHHHHHHH        11111111        77777777777777777777777777777777\n"); //印出字串
@@ -57,9 +93,15 @@ while(1){
 	fflush(stdin);//使input buffer淨空 
 	scanf("%c", &ch);
 }
+if (ch == 'a') {
+            displaySeats(seats);
+            system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+            system("CLS");//清除螢幕
+        }
+                
 if(ch == 'd'){
 		printf("確定要結束程式嗎? (y/n)\n");
-		fflush(stdin);//使input buffer淨空 
+		fflush(stdin);//淨空 
 		scanf("%c" , &ans);
 	while(ans!='y'&&ans!='Y'&&ans!='N'&&ans!='n')
 	{
@@ -84,10 +126,11 @@ if(ch == 'd'){
         fflush(stdin);//使input buffer淨空 
         scanf("%d",&input);
     }
+
     else
 	{
     system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
 	system("CLS");//清除螢幕
-	return 0;}
+	return 0;} 
 }
-} 
+}
