@@ -98,6 +98,12 @@ int main(void) //主函數main()從這開始
                     searchStudent(students, n);
                     system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
                     system("CLS");//清除螢幕
+                    
+          } else if (ch == 'd') {
+                    clearScreen();
+                    rankStudents(students, n);
+                    system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+                    system("CLS");//清除螢幕
 							    
             } else if (ch == 'e') {
                 printf("確定要結束程式嗎? (y/n)\n");
@@ -212,6 +218,25 @@ void searchStudent(Student *students, int n) {
 
     if (!found) {
         printf("沒有找到學生 %s 的資料。\n", searchName);
+    }
+}
+// 排序函數，用於排序學生的平均成績
+int compareStudents(const void *a, const void *b) {
+    Student *studentA = (Student *)a;
+    Student *studentB = (Student *)b;
+    float averageA = (studentA->math + studentA->physics + studentA->english) / 3.0;
+    float averageB = (studentB->math + studentB->physics + studentB->english) / 3.0;
+    return (averageB - averageA) > 0 ? 1 : -1;
+}
+
+// 顯示學生平均成績排名
+void rankStudents(Student *students, int n) {
+    qsort(students, n, sizeof(Student), compareStudents);
+    int i; 
+    for (i = 0; i < n; i++) {
+        float average = (students[i].math + students[i].physics + students[i].english) / 3.0;
+        printf("姓名: %s, 學號: %d, 平均成績: %.1f\n",
+            students[i].name, students[i].id, average);
     }
 }
 
