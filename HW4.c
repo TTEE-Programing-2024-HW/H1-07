@@ -239,7 +239,8 @@ void rankStudents(Student *students, int n) {
             students[i].name, students[i].id, average);
     }
 }
-
+//在這次的作業當中，我更加學會將程式應用在不一樣的地方
+//並且更加學會如何使用GIT 
 
 
 
