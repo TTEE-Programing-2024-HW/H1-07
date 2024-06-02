@@ -91,8 +91,14 @@ int main(void) //主函數main()從這開始
                     clearScreen();
                     displayStudents(students, n);
                     system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
-                    system("CLS");//清除螢幕 
-					    
+                    system("CLS");//清除螢幕
+					 
+			}else if (ch == 'c') {
+                    clearScreen();
+                    searchStudent(students, n);
+                    system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+                    system("CLS");//清除螢幕
+							    
             } else if (ch == 'e') {
                 printf("確定要結束程式嗎? (y/n)\n");
                 fflush(stdin); //使input buffer淨空 
@@ -186,7 +192,28 @@ void displayStudents(Student *students, int n) {
         printf("姓名: %s, 學號: %d, 數學: %d, 物理: %d, 英文: %d, 平均成績: %.1f\n",
             students[i].name, students[i].id, students[i].math, students[i].physics, students[i].english, average);
 }
-} 
+}  
+// 搜尋學生資料
+void searchStudent(Student *students, int n) {
+    char searchName[50];
+    int i, found = 0;
+    printf("請輸入要搜尋的學生姓名：");
+    scanf("%s", searchName);
+
+    for (i = 0; i < n; i++) {
+        if (strcmp(students[i].name, searchName) == 0) {
+            float average = (students[i].math + students[i].physics + students[i].english) / 3.0;
+            printf("找到學生！姓名: %s, 學號: %d, 數學: %d, 物理: %d, 英文: %d, 平均成績: %.1f\n",
+                students[i].name, students[i].id, students[i].math, students[i].physics, students[i].english, average);
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("沒有找到學生 %s 的資料。\n", searchName);
+    }
+}
 
 
 
