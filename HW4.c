@@ -83,10 +83,16 @@ int main(void) //主函數main()從這開始
                 }
 
                 inputStudents(students, n);
-
                 // 回到主選單
                 system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
-                clearScreen();
+                system("CLS");//清除螢幕 
+                
+            }else if (ch == 'b') {
+                    clearScreen();
+                    displayStudents(students, n);
+                    system("PAUSE"); // 螢幕畫面暫停，並等待使用者按任意鍵
+                    system("CLS");//清除螢幕 
+					    
             } else if (ch == 'e') {
                 printf("確定要結束程式嗎? (y/n)\n");
                 fflush(stdin); //使input buffer淨空 
@@ -172,4 +178,19 @@ void inputStudents(Student *students, int n) {
         }
     }
 }
+// 顯示所有學生資料
+void displayStudents(Student *students, int n) {
+    int i;
+    for (i = 0; i < n; i++) {
+        float average = (students[i].math + students[i].physics + students[i].english) / 3.0;
+        printf("姓名: %s, 學號: %d, 數學: %d, 物理: %d, 英文: %d, 平均成績: %.1f\n",
+            students[i].name, students[i].id, students[i].math, students[i].physics, students[i].english, average);
+}
+} 
 
+
+
+
+
+
+ 
